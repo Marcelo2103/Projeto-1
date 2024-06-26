@@ -2,6 +2,7 @@ using Exo.WebApi.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
+using Exo.WebApi.Repositories;
 
 
 namespace Exo.WebApi.Contexts
@@ -14,6 +15,11 @@ namespace Exo.WebApi.Contexts
         public ExoContext(DbContextOptions<ExoContext> options) : base(options)
         {
         }
+
+        public ExoContext(DbContextOptions options) : base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(!optionsBuilder.IsConfigured)
@@ -30,9 +36,8 @@ namespace Exo.WebApi.Contexts
             }
         }
         public DbSet<Projeto> Projetos { get; set; }
-
-                
+        
+        public DbSet<Usuario> Usuarios { get; set; }
     }
-    
     
 }
